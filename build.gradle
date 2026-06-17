@@ -1,0 +1,60 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.15'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// 【Web API】HTTPリクエストの処理（Controllerなど）に必須
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// 【バリデーション】リクエストデータのチェック用
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	// 【開発効率化】Lombok（Getter/Setterなどのコードを自動生成）
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// 【開発効率化】DevTools（変更時の自動再起動など）
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// 【テスト】標準的なテスト用ライブラリ
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	/* --- 以下は、DBや画面（Thymeleaf）を使う際に必要になったら戻す項目 ---
+
+    // DB接続用 (今回はAPIのみのためコメントアウト)
+    // implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    // runtimeOnly 'org.postgresql:postgresql'
+
+    // サーバーサイド画面描画用 (今回はAPIのみのためコメントアウト)
+    // implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // テスト関連の不要項目
+    // testImplementation 'org.springframework.boot:spring-boot-starter-jdbc-test'
+    // testImplementation 'org.springframework.boot:spring-boot-starter-thymeleaf-test'
+    // testImplementation 'org.springframework.boot:spring-boot-starter-validation-test'
+    // testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+
+    -------------------------------------------------------------------- */
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

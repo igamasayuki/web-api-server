@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: web-api-server
+
+server:
+  port: ${PORT:8080}
