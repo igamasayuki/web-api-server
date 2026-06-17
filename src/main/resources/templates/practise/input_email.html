@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <p>Ajaxで非同期に入力チェックを行う</p>
+
+    <div id="duplicateMessage" style="color: red"></div>
+    Email:
+    <input type="text" id="email" />
+
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script th:src="@{/js/check_email.js}"></script>
+  </body>
+</html>
