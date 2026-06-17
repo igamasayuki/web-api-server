@@ -150,6 +150,24 @@ Thymeleaf による HTML 画面。同プロジェクトの `/api/credit/**` を 
 
 ### 1. Render の設定
 
+Render では **Docker** または **Native Runtime** の2通りでデプロイできる。  
+本プロジェクトには `Dockerfile` を同梱しているため、**Docker でのデプロイを推奨**。
+
+#### Docker を使う場合（推奨）
+
+Render のサービス作成時に **「Docker」** を選択するだけで自動的に `Dockerfile` が使われる。  
+Build Command / Start Command の手動設定は不要。
+
+```dockerfile
+# マルチステージビルド構成
+# Stage 1: Gradle でビルド（eclipse-temurin:21-jdk-alpine）
+# Stage 2: 軽量JREで実行（eclipse-temurin:21-jre-alpine）
+```
+
+> Windows 環境で開発している場合でも、`Dockerfile` 内で `gradlew` の改行コード（CRLF）を自動修正しているため問題なく動作する。
+
+#### Native Runtime を使う場合
+
 | 項目 | 値 |
 |---|---|
 | Build Command | `./gradlew build -x test` |
