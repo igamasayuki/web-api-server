@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>決済完了</title>
+</head>
+<body>
+	<h2>決済処理完了</h2>
+
+	<p>クレジットカード決済処理が完了しました。</p>
+
+	<div th:if="${responseCreditCardPaymentApiDomain != null}">
+		<h3>APIレスポンス</h3>
+		<p>ステータス：<span th:text="${responseCreditCardPaymentApiDomain.status}"></span></p>
+		<p>メッセージ：<span th:text="${responseCreditCardPaymentApiDomain.message}"></span></p>
+		<p>エラーコード：<span th:text="${responseCreditCardPaymentApiDomain.error_code}"></span></p>
+	</div>
+
+	<p th:if="${responseCreditCardPaymentApiDomain == null}">（銀行振込が選択されました）</p>
+
+	<a href="/credit">入力画面に戻る</a>
+</body>
+</html>

@@ -4,3 +4,10 @@ spring:
 
 server:
   port: ${PORT:8080}
+
+# クレカクライアントが呼び出すAPIのベースURL
+# ローカル: http://localhost:8080 (デフォルト)
+# Render: 環境変数 APP_BASE_URL に自サービスのURL (例: https://xxxx.onrender.com) を設定すること
+credit:
+  api:
+    base-url: ${APP_BASE_URL:http://localhost:8080}

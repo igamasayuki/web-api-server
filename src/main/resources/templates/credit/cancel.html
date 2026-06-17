@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>決済キャンセル</title>
+</head>
+<body>
+	<h2>クレジットカード決済キャンセル</h2>
+
+	<p>決済をキャンセルします。よろしいですか？</p>
+
+	<form method="post" th:action="@{/credit/cancel}">
+		<button type="submit">キャンセルする</button>
+		<button type="button" onclick="location.href='/credit'">戻る</button>
+	</form>
+</body>
+</html>

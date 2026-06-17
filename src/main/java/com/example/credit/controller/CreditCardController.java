@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.credit.domain.RequestCreditCardPaymentApiDomain;
+import com.example.credit.domain.ResponseCreditCardCancelApiDomain;
 import com.example.credit.domain.ResponseCreditCardPaymentApiDomain;
 
 import jakarta.validation.Valid;
@@ -65,6 +66,20 @@ public class CreditCardController {
         response.setMessage("OK.");
         response.setError_code("E-00");
         System.out.println("レスポンス情報: " + response);
+        return response;
+    }
+
+    /**
+     * クレジット決済キャンセル処理（疑似ロジック）.
+     * POST /api/credit/cancel
+     */
+    @PostMapping("/cancel")
+    public ResponseCreditCardCancelApiDomain cancel() {
+        ResponseCreditCardCancelApiDomain response = new ResponseCreditCardCancelApiDomain();
+        response.setStatus("success");
+        response.setMessage("Cancelled.");
+        response.setError_code("E-00");
+        System.out.println("キャンセルレスポンス: " + response);
         return response;
     }
 

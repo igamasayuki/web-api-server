@@ -1,6 +1,5 @@
 package com.example.credit.domain;
 
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -22,10 +21,10 @@ public class RequestCreditCardPaymentApiDomain {
     @Pattern(regexp = "\\d{14}", message = "order_number must be 14 digits")
     private String order_number;
 
-    /** 決済金額(数値・10桁まで) */
-    @NotNull
-    @Max(9999999999L)
-    private Long amount;
+    /** 決済金額(数字・10桁まで) */
+    @NotBlank
+    @Pattern(regexp = "\\d{1,10}", message = "amount must be numeric and up to 10 digits")
+    private String amount;
 
     /** カード番号(数字14〜16桁) */
     @NotBlank

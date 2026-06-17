@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>クレジットカード決済</title>
+</head>
+<body>
+	<h2>クレジットカード決済</h2>
+
+	<form method="post" th:action="@{/credit/payment}" th:object="${creditCardPaymentForm}">
+		<!-- ダミー値（固定） -->
+		<input type="hidden" name="user_id" value="9999">
+		<input type="hidden" name="order_number" value="11111111111111">
+
+		<p>
+			<label>決済金額:<br>
+				<input type="text" name="amount" placeholder="例: 1000" th:field="*{amount}">
+			</label>
+		</p>
+
+		<p>
+			<label>お支払方法:</label><br>
+			<span th:each="item : ${paymentMethodMap}">
+				<label>
+					<input type="radio" name="paymentMethod"
+						th:value="${item.key}" th:text="${item.value}"
+						th:field="*{paymentMethod}">
+				</label>
+			</span>
+		</p>
+
+		<p>
+			<label>カード番号 (14〜16桁):<br>
+				<input type="text" name="card_number" placeholder="例: 1234567890123456" th:field="*{card_number}">
+			</label>
+		</p>
+		<p>
+			<label>有効期限 月 (2桁):<br>
+				<input type="text" name="card_exp_month" placeholder="例: 12" th:field="*{card_exp_month}">
+			</label>
+		</p>
+		<p>
+			<label>有効期限 年 (4桁):<br>
+				<input type="text" name="card_exp_year" placeholder="例: 2027" th:field="*{card_exp_year}">
+			</label>
+		</p>
+		<p>
+			<label>セキュリティコード (3〜4桁):<br>
+				<input type="text" name="card_cvv" placeholder="例: 123" th:field="*{card_cvv}">
+			</label>
+		</p>
+		<p>
+			<label>カード名義人:<br>
+				<input type="text" name="card_name" placeholder="例: TARO YAMADA" th:field="*{card_name}">
+			</label>
+		</p>
+
+		<button type="submit">決済する</button>
+		<button type="button" onclick="location.href='/credit/toCancel'">キャンセル画面へ</button>
+	</form>
+</body>
+</html>

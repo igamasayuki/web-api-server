@@ -21,6 +21,9 @@ dependencies {
 	// 【Web API】HTTPリクエストの処理（Controllerなど）に必須
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	// 【画面描画】Thymeleaf（クレカクライアント用HTML）
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
 	// 【バリデーション】リクエストデータのチェック用
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
